@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materials &amp; Library — Uzthaz Rasheed Hajjul Akbar</title>
+  <meta name="description" content="Books, digital treatises and recorded courses by Uzthaz Rasheed Hajjul Akbar. Secure checkout with instant download delivery.">
+  <meta name="theme-color" content="#0D1B2A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Uzthaz Rasheed Hajjul Akbar — home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span>Uzthaz <strong>Rasheed</strong> <span>·</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="speeches.html">Speeches</a>
+        <a href="articles.html">Articles</a>
+        <a href="events.html">Events</a>
+        <a href="shop.html" aria-current="page">Materials</a>
+        <button class="nav__cta" data-cart-open aria-label="Open cart" style="display:inline-flex;align-items:center;gap:0.5rem">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+          Cart <span class="cart-count" data-cart-count></span>
+        </button>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="geo-layer" aria-hidden="true"></div>
+      <div class="container">
+        <p class="arabic reveal">وَقُل رَّبِّ زِدْنِي عِلْمًا</p>
+        <p class="eyebrow reveal" data-delay="60">The Library</p>
+        <h1 class="reveal" data-delay="120">Books &amp; Materials</h1>
+        <p class="lead reveal" data-delay="180">Carefully prepared works to accompany your study — printed volumes, digital treatises and recorded courses, delivered securely.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Product cards are rendered from content/products.json -->
+        <div class="grid grid-3" id="product-grid"></div>
+
+        <p class="lead text-center mt-4 reveal" style="margin-inline:auto">
+          All purchases support the Uzthaz’s educational work. Digital items are delivered by instant download; printed books are shipped across Sri Lanka.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- CART DRAWER -->
+  <div class="drawer-backdrop" data-cart-backdrop></div>
+  <aside class="drawer" data-cart-drawer aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer__head">
+      <h3>Your Collection</h3>
+      <button class="drawer__close" data-cart-close aria-label="Close cart">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer__items" data-cart-items></div>
+    <div class="drawer__foot" data-cart-foot></div>
+  </aside>
+
+  <div data-partial="footer"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/content.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speeches &amp; Lectures — Uzthaz Rasheed Hajjul Akbar</title>
+  <meta name="description" content="Recorded lectures, Friday khutbahs and lessons by Uzthaz Rasheed Hajjul Akbar. Filter by topic and watch or listen.">
+  <meta name="theme-color" content="#0D1B2A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Uzthaz Rasheed Hajjul Akbar — home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span>Uzthaz <strong>Rasheed</strong> <span>·</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="speeches.html" aria-current="page">Speeches</a>
+        <a href="articles.html">Articles</a>
+        <a href="events.html">Events</a>
+        <a href="shop.html">Materials</a>
+        <a class="nav__cta" href="contact.html">Contact</a>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="geo-layer" aria-hidden="true"></div>
+      <div class="container">
+        <p class="arabic reveal">وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ</p>
+        <p class="eyebrow reveal" data-delay="60">Speeches &amp; Lectures</p>
+        <h1 class="reveal" data-delay="120">The Spoken Word</h1>
+        <p class="lead reveal" data-delay="180">A growing archive of khutbahs, lessons and reflections — recorded for the benefit of those near and far.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter reveal" role="group" aria-label="Filter speeches by topic"
+             data-filter-group data-filter-target="#speech-grid" data-filter-empty="#speech-empty">
+          <button data-filter="all" aria-pressed="true">All</button>
+          <button data-filter="tafsir" aria-pressed="false">Tafsīr</button>
+          <button data-filter="fiqh" aria-pressed="false">Fiqh</button>
+          <button data-filter="spirituality" aria-pressed="false">Spirituality</button>
+          <button data-filter="seerah" aria-pressed="false">Sīrah</button>
+        </div>
+
+        <!-- Speech cards are rendered from content/speeches.json -->
+        <div class="grid grid-3" id="speech-grid"></div>
+        <p id="speech-empty" class="is-hidden text-center lead" style="padding:var(--space-5) 0">No lectures in this topic yet — please check back soon.</p>
+      </div>
+    </section>
+  </main>
+
+  <div data-partial="footer"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/content.js"></script>
+</body>
+</html>

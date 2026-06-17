@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Article — Uzthaz Rasheed Hajjul Akbar</title>
+  <meta name="description" content="A reflection by Uzthaz Rasheed Hajjul Akbar.">
+  <meta name="theme-color" content="#0D1B2A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Uzthaz Rasheed Hajjul Akbar — home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span>Uzthaz <strong>Rasheed</strong> <span>·</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="speeches.html">Speeches</a>
+        <a href="articles.html" aria-current="page">Articles</a>
+        <a href="events.html">Events</a>
+        <a href="shop.html">Materials</a>
+        <a class="nav__cta" href="contact.html">Contact</a>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Article is rendered from content/articles.json by ?slug= -->
+    <article id="article-detail" data-article-detail>
+      <div class="section"><div class="container"><p class="lead text-center">Loading…</p></div></div>
+    </article>
+  </main>
+
+  <div data-partial="footer"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/content.js"></script>
+</body>
+</html>

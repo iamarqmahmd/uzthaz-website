@@ -1,0 +1,38 @@
+name: Deploy to cPanel
+
+# Runs every time content is saved through the CMS (a commit to main),
+# or manually from the Actions tab. Uploads the static site to cPanel over FTPS.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload to cPanel via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}        # e.g. ftp.yourdomain.com
+          username: ${{ secrets.FTP_USERNAME }}    # cPanel / FTP account user
+          password: ${{ secrets.FTP_PASSWORD }}    # FTP account password
+          protocol: ftps                           # secure FTP (recommended)
+          # cPanel web root. Usually public_html/ — or public_html/subfolder/
+          # if the site lives in a subdirectory. Adjust to match your hosting.
+          server-dir: ./public_html/
+          # Files that should NOT be uploaded to the live server:
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.claude/**
+            CMS-SETUP.md
+            README.md

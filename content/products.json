@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": "lamp",
+      "title": "The Lamp of Certainty",
+      "type": "Hardcover Book",
+      "category": "book",
+      "price": 2400,
+      "description": "A treatise on faith and the inner life of the believer, 312 pages."
+    },
+    {
+      "id": "forty",
+      "title": "Forty Hadīth on Mercy",
+      "type": "Digital PDF",
+      "category": "pdf",
+      "price": 850,
+      "description": "Annotated selections with commentary for daily reflection."
+    },
+    {
+      "id": "tajwid",
+      "title": "Foundations of Tajwīd",
+      "type": "Recorded Course",
+      "category": "course",
+      "price": 3600,
+      "description": "Twelve recorded sessions on the art of Qur’ānic recitation."
+    },
+    {
+      "id": "garden",
+      "title": "The Garden of the Seekers",
+      "type": "Hardcover Book",
+      "category": "book",
+      "price": 2100,
+      "description": "Reflections on spiritual refinement and the purification of the heart."
+    },
+    {
+      "id": "prayer",
+      "title": "A Primer on Prayer",
+      "type": "Digital PDF",
+      "category": "pdf",
+      "price": 650,
+      "description": "A concise guide to the ṣalāh according to the Shāfi‘ī school."
+    },
+    {
+      "id": "seerah",
+      "title": "The Sealed Nectar — Sīrah Course",
+      "type": "Recorded Course",
+      "category": "course",
+      "price": 4200,
+      "description": "An eight-part journey through the life of the Prophet ﷺ."
+    }
+  ]
+}

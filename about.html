@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Uzthaz Rasheed Hajjul Akbar</title>
+  <meta name="description" content="The biography, scholarly credentials and academic journey of Uzthaz Rasheed Hajjul Akbar, Islamic scholar and educator based in Sri Lanka.">
+  <meta name="theme-color" content="#0D1B2A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="Uzthaz Rasheed Hajjul Akbar — home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span>Uzthaz <strong>Rasheed</strong> <span>·</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="speeches.html">Speeches</a>
+        <a href="articles.html">Articles</a>
+        <a href="events.html">Events</a>
+        <a href="shop.html">Materials</a>
+        <a class="nav__cta" href="contact.html">Contact</a>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="geo-layer" aria-hidden="true"></div>
+      <div class="container">
+        <p class="arabic reveal" data-about="arabic">طَلَبُ الْعِلْمِ فَرِيضَةٌ</p>
+        <p class="eyebrow reveal" data-delay="60">About the Scholar</p>
+        <h1 class="reveal" data-delay="120">Uzthaz Rasheed Hajjul Akbar</h1>
+        <p class="lead reveal" data-delay="180" data-about="intro">A teacher whose life has been shaped by the conviction that the seeking of knowledge is a sacred, lifelong obligation.</p>
+      </div>
+    </section>
+
+    <!-- BIOGRAPHY -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2" style="align-items:start;gap:var(--space-5)">
+          <div class="reveal">
+            <div class="thumb thumb--portrait" style="max-width:420px" id="about-portrait">
+              <div class="thumb__motif js-mark"></div>
+              <span class="sr-only">Portrait of Uzthaz Rasheed Hajjul Akbar</span>
+            </div>
+            <div class="chips mt-4" id="about-highlight-chips"></div>
+          </div>
+          <div class="reveal" data-delay="120">
+            <p class="eyebrow">Biography</p>
+            <h2 class="section-title" data-about="bioTitle">A scholar of the classical tradition</h2>
+            <div class="rule"></div>
+            <div class="mt-3" style="color:var(--muted)" id="about-bio"></div>
+            <a class="btn btn--ghost mt-3" href="contact.html">Invite the Scholar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section">
+      <div class="geo-layer geo-watermark" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Academic Journey</p>
+          <h2 class="section-title">A path of study and service</h2>
+          <div class="rule"></div>
+        </div>
+        <!-- Rendered from content/about.json -->
+        <div class="timeline" style="max-width:760px" id="about-timeline"></div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow">Areas of Expertise</p>
+          <h2 class="section-title">Where his scholarship is rooted</h2>
+          <div class="rule center"></div>
+        </div>
+        <div class="chips reveal" data-delay="100" id="about-expertise" style="justify-content:center;max-width:840px;margin-inline:auto"></div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="section quote-section">
+      <div class="container">
+        <figure class="pull-quote reveal">
+          <blockquote>The ink of the scholar is more sacred than the blood of the martyr.</blockquote>
+          <cite>— Attributed to the Prophetic tradition</cite>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <div data-partial="footer"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/content.js"></script>
+</body>
+</html>

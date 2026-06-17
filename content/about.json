@@ -1,0 +1,38 @@
+{
+  "arabic": "طَلَبُ الْعِلْمِ فَرِيضَةٌ",
+  "intro": "A teacher whose life has been shaped by the conviction that the seeking of knowledge is a sacred, lifelong obligation.",
+  "bioTitle": "A scholar of the classical tradition",
+  "bio": [
+    "Uzthaz Rasheed Hajjul Akbar was born in the Eastern Province of Sri Lanka, where his early love of the Qur’ān was nurtured in the local madrasa. He completed his memorisation of the Holy Qur’ān before the age of fifteen, and went on to study the Islamic sciences under a chain of respected teachers whose scholarship traces back through the great institutions of learning.",
+    "He pursued advanced study in Tafsīr, Hadīth and Fiqh, earning the honorific Hajjul Akbar in recognition of his service and his completion of the greater pilgrimage. Over a career spanning more than three decades, he has taught thousands of students, authored works on faith and jurisprudence, and delivered lectures across Sri Lanka and abroad.",
+    "His teaching is marked by a rare balance: deep fidelity to the classical texts, paired with a gentle responsiveness to the realities of modern life. He is known among his students for his patience, his precision, and his insistence that knowledge must be joined to character."
+  ],
+  "highlightChips": [
+    "Qur’ānic Exegesis",
+    "Hadīth Sciences",
+    "Islamic Jurisprudence",
+    "Spiritual Refinement",
+    "Arabic Linguistics",
+    "Comparative Fiqh"
+  ],
+  "timeline": [
+    { "year": "1988", "role": "Completion of Qur’ānic Memorisation", "desc": "Became a Hāfiz of the Holy Qur’ān at his local madrasa in the Eastern Province." },
+    { "year": "1994", "role": "Graduation in the Islamic Sciences", "desc": "Completed the ‘ālim course with distinction, specialising in Tafsīr and Hadīth." },
+    { "year": "1999", "role": "Advanced Study Abroad", "desc": "Studied comparative jurisprudence and the principles of Fiqh under noted scholars overseas." },
+    { "year": "2004", "role": "Founding Teacher & Lecturer", "desc": "Began teaching the next generation of students, establishing a reputation for clarity and care." },
+    { "year": "2013", "role": "First Published Works", "desc": "Released his earliest treatises on faith and jurisprudence, widely studied in Sri Lanka." },
+    { "year": "Today", "role": "Scholar, Author & Public Speaker", "desc": "Continues to teach, write and lecture, serving communities across the island and beyond." }
+  ],
+  "expertise": [
+    "Tafsīr — Qur’ānic Exegesis",
+    "‘Ulūm al-Hadīth",
+    "Shāfi‘ī Fiqh",
+    "Usūl al-Fiqh",
+    "‘Aqīdah & Theology",
+    "Tasawwuf & Purification",
+    "Arabic Grammar & Rhetoric",
+    "Sīrah of the Prophet ﷺ",
+    "Family & Community Fiqh",
+    "Contemporary Islamic Ethics"
+  ]
+}

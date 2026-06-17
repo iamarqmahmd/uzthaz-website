@@ -1,0 +1,206 @@
+# =============================================================
+#  Content Manager configuration (Sveltia CMS / Decap CMS)
+#  Edit the two lines marked  ← CHANGE  then commit.
+# =============================================================
+
+backend:
+  name: github
+  repo: iamarqmahmd/uzthaz-website   # your GitHub repo
+  branch: main
+  # Editors can sign in at /admin with a GitHub Access Token out of the box (no setup).
+  # ONLY if you want one-click "Sign In with GitHub" instead, deploy the free
+  # sveltia-cms-auth Cloudflare Worker and uncomment the next line with its URL.
+  # (See CMS-SETUP.md → "Editor login", Option 2.)
+  # base_url: https://YOUR-AUTH-WORKER.workers.dev
+
+# Uploaded images. Relative paths so the site works in any folder.
+media_folder: "assets/img/uploads"
+public_folder: "assets/img/uploads"
+
+# Friendly preview/links (optional — set to the live site)
+site_url: https://www.uzthazhajjulakbar.org
+display_url: https://www.uzthazhajjulakbar.org
+
+# Wording shown in the editor UI
+locale: en
+editor:
+  preview: false
+
+collections:
+  # ----------------------------------------------------------
+  - name: site
+    label: "Site & Identity"
+    icon: settings
+    delete: false
+    files:
+      - name: site
+        label: "Site Settings"
+        file: "content/site.json"
+        description: "Name, tagline, contact details and social links used across the whole site."
+        fields:
+          - { name: heroArabic, label: "Home — Arabic phrase (Bismillah)", widget: string }
+          - { name: heroName1, label: "Scholar name — line 1", widget: string }
+          - { name: heroName2, label: "Scholar name — line 2 (gold)", widget: string }
+          - { name: heroRole, label: "Role / subtitle", widget: string }
+          - { name: heroTagline, label: "Tagline", widget: string }
+          - { name: email, label: "Contact email", widget: string }
+          - { name: location, label: "Location", widget: string }
+          - { name: footerAbout, label: "Footer description", widget: text }
+          - { name: copyrightName, label: "Copyright name", widget: string }
+          - name: socials
+            label: "Social links"
+            widget: list
+            summary: "{{fields.platform}}"
+            fields:
+              - { name: platform, label: "Platform", widget: select, options: ["youtube", "facebook", "instagram"] }
+              - { name: url, label: "Profile URL", widget: string }
+
+  # ----------------------------------------------------------
+  - name: home
+    label: "Home Page"
+    icon: home
+    delete: false
+    files:
+      - name: home
+        label: "Home Page"
+        file: "content/home.json"
+        fields:
+          - { name: introTitle, label: "Introduction — title", widget: string }
+          - { name: introText, label: "Introduction — paragraph", widget: text }
+          - { name: pullQuote, label: "Pull quote", widget: text }
+          - { name: pullQuoteCite, label: "Pull quote — attribution", widget: string }
+          - { name: materialsTitle, label: "Materials section — title", widget: string }
+
+  # ----------------------------------------------------------
+  - name: about
+    label: "About Page"
+    icon: person
+    delete: false
+    files:
+      - name: about
+        label: "About Page"
+        file: "content/about.json"
+        fields:
+          - { name: arabic, label: "Arabic phrase", widget: string }
+          - { name: intro, label: "Intro line", widget: text }
+          - { name: portrait, label: "Portrait photo (optional)", widget: image, required: false }
+          - { name: bioTitle, label: "Biography — title", widget: string }
+          - name: bio
+            label: "Biography — paragraphs"
+            widget: list
+            field: { name: paragraph, label: "Paragraph", widget: text }
+          - name: highlightChips
+            label: "Highlight tags (beside photo)"
+            widget: list
+            field: { name: tag, label: "Tag", widget: string }
+          - name: timeline
+            label: "Academic timeline"
+            widget: list
+            summary: "{{fields.year}} — {{fields.role}}"
+            fields:
+              - { name: year, label: "Year", widget: string }
+              - { name: role, label: "Title", widget: string }
+              - { name: desc, label: "Description", widget: text }
+          - name: expertise
+            label: "Areas of expertise"
+            widget: list
+            field: { name: area, label: "Area", widget: string }
+
+  # ----------------------------------------------------------
+  - name: speeches
+    label: "Speeches"
+    icon: mic
+    delete: false
+    files:
+      - name: speeches
+        label: "Speeches"
+        file: "content/speeches.json"
+        fields:
+          - name: speeches
+            label: "Speeches"
+            label_singular: "Speech"
+            widget: list
+            summary: "{{fields.title}} ({{fields.date}})"
+            fields:
+              - { name: title, label: "Title", widget: string }
+              - { name: category, label: "Topic", widget: select, options: ["tafsir", "fiqh", "spirituality", "seerah"] }
+              - { name: date, label: "Date", widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { name: duration, label: "Duration (e.g. 38 min)", widget: string, required: false }
+              - { name: description, label: "Short description", widget: text }
+              - { name: youtube, label: "YouTube embed URL", widget: string, hint: "Use the /embed/ form: https://www.youtube.com/embed/VIDEO_ID" }
+              - { name: image, label: "Custom thumbnail (optional)", widget: image, required: false }
+
+  # ----------------------------------------------------------
+  - name: events
+    label: "Events"
+    icon: calendar
+    delete: false
+    files:
+      - name: events
+        label: "Events"
+        file: "content/events.json"
+        fields:
+          - name: events
+            label: "Events"
+            label_singular: "Event"
+            widget: list
+            summary: "{{fields.title}} — {{fields.status}}"
+            fields:
+              - { name: title, label: "Title", widget: string }
+              - { name: status, label: "Status", widget: select, options: ["upcoming", "past"] }
+              - { name: date, label: "Date", widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { name: location, label: "Location", widget: string }
+              - { name: time, label: "Time (upcoming only, e.g. 8:00 PM)", widget: string, required: false }
+              - { name: registerUrl, label: "Register link (upcoming only)", widget: string, required: false, default: "contact.html" }
+              - { name: description, label: "Description (past events)", widget: text, required: false }
+
+  # ----------------------------------------------------------
+  - name: articles
+    label: "Articles"
+    icon: article
+    delete: false
+    files:
+      - name: articles
+        label: "Articles"
+        file: "content/articles.json"
+        fields:
+          - name: articles
+            label: "Articles"
+            label_singular: "Article"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: slug, label: "Slug (URL id, e.g. patience-of-the-heart)", widget: string, pattern: ['^[a-z0-9-]+$', "lowercase letters, numbers and hyphens only"] }
+              - { name: title, label: "Title", widget: string }
+              - { name: category, label: "Category", widget: select, options: ["faith", "fiqh", "spirituality", "society"] }
+              - { name: date, label: "Date", widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { name: readTime, label: "Read time (e.g. 9 min read)", widget: string }
+              - { name: featured, label: "Feature on the home page", widget: boolean, default: false }
+              - { name: excerpt, label: "Short excerpt (card + preview)", widget: text }
+              - { name: arabicOpening, label: "Opening Arabic verse (optional)", widget: string, required: false }
+              - { name: image, label: "Cover image (optional)", widget: image, required: false }
+              - { name: body, label: "Article body", widget: markdown }
+
+  # ----------------------------------------------------------
+  - name: products
+    label: "Materials (Shop)"
+    icon: book
+    delete: false
+    files:
+      - name: products
+        label: "Materials"
+        file: "content/products.json"
+        fields:
+          - name: products
+            label: "Materials"
+            label_singular: "Item"
+            widget: list
+            summary: "{{fields.title}} — Rs {{fields.price}}"
+            fields:
+              - { name: id, label: "ID (unique, e.g. lamp-of-certainty)", widget: string, pattern: ['^[a-z0-9-]+$', "lowercase letters, numbers and hyphens only"] }
+              - { name: title, label: "Title", widget: string }
+              - { name: type, label: "Type label (e.g. Hardcover Book)", widget: string }
+              - { name: category, label: "Category (for filtering)", widget: select, options: ["book", "pdf", "course"] }
+              - { name: price, label: "Price (Rs, number only)", widget: number, value_type: int, min: 0 }
+              - { name: description, label: "Description", widget: text }
+              - { name: image, label: "Cover image (optional)", widget: image, required: false }

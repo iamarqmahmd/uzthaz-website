@@ -1,0 +1,12 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Local tooling (not part of the website)
+.claude/
+
+# Logs
+*.log
+
+# Build artifact for the manual-upload route — not part of the repo
+uzthaz-website-deploy.zip

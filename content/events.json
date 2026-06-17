@@ -1,0 +1,56 @@
+{
+  "events": [
+    {
+      "title": "Annual Tafsīr Intensive — Sūrat al-Kahf",
+      "status": "upcoming",
+      "date": "2026-06-28",
+      "location": "Colombo Grand Mosque",
+      "time": "After Maghrib, 3 days",
+      "registerUrl": "contact.html"
+    },
+    {
+      "title": "Evening Lecture — The Fiqh of Trade",
+      "status": "upcoming",
+      "date": "2026-07-11",
+      "location": "Kandy Jumu‘ah Masjid",
+      "time": "8:00 PM",
+      "registerUrl": "contact.html"
+    },
+    {
+      "title": "Youth Halaqah — Building a Living Faith",
+      "status": "upcoming",
+      "date": "2026-08-02",
+      "location": "Galle Community Centre",
+      "time": "4:30 PM",
+      "registerUrl": "contact.html"
+    },
+    {
+      "title": "Ramadān Night Lectures Series",
+      "status": "past",
+      "date": "2026-03-01",
+      "location": "Colombo",
+      "description": "A nightly series across the blessed month exploring the themes of the Qur’ān, attended by hundreds and broadcast online for the wider community."
+    },
+    {
+      "title": "Seminar — The Family in Islam",
+      "status": "past",
+      "date": "2026-01-18",
+      "location": "Kandy",
+      "description": "A full-day seminar on the rights and responsibilities within the Muslim household, with a question-and-answer session for couples and parents."
+    },
+    {
+      "title": "Hadīth Intensive — Forty of al-Nawawī",
+      "status": "past",
+      "date": "2025-11-15",
+      "location": "Galle",
+      "description": "A weekend study of the celebrated forty hadīth, examining their chains, meanings and application to daily life."
+    },
+    {
+      "title": "Public Lecture — Knowledge & Sincerity",
+      "status": "past",
+      "date": "2025-09-20",
+      "location": "Batticaloa",
+      "description": "An evening address on the foundations of seeking sacred knowledge with a pure intention, followed by community du‘ā."
+    }
+  ]
+}
