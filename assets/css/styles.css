@@ -554,6 +554,32 @@ a.card:hover .thumb__play span,
   max-width: 36ch;
 }
 .hero__actions { margin-top: var(--space-4); display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
+
+/* ---- Home hero variant: portrait banner with left-aligned text ---- */
+.hero--image::after { display: none; }            /* drop the radial vignette over the photo */
+.hero__media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 72% 50%; }
+.hero__media-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    var(--navy) 0%, rgba(13, 27, 42, 0.97) 26%, rgba(13, 27, 42, 0.6) 48%,
+    rgba(13, 27, 42, 0.14) 70%, rgba(13, 27, 42, 0) 100%);
+}
+.hero--image .hero__inner { text-align: left; }
+.hero--image .hero__text { max-width: 38rem; }
+.hero--image .hero__arabic { text-align: left; }
+.hero--image .hero__title { text-indent: 0; }      /* no longer centered, so no compensation */
+.hero--image .hero__tagline { margin-inline: 0; text-align: left; }
+.hero--image .hero__actions { justify-content: flex-start; }
+
+@media (max-width: 1024px) {
+  /* not enough width for the split — darken the whole portrait so the text stays readable */
+  .hero__media-scrim {
+    background: linear-gradient(180deg,
+      rgba(13, 27, 42, 0.60) 0%, rgba(13, 27, 42, 0.80) 55%, rgba(13, 27, 42, 0.93) 100%);
+  }
+  .hero--image .hero__text { max-width: 100%; }
+}
 .hero__scroll {
   position: absolute;
   bottom: var(--space-3);
