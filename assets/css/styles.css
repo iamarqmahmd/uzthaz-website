@@ -131,7 +131,12 @@ p { max-width: 70ch; }
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--gold);
+  max-width: none; /* labels must not inherit the 70ch prose cap, which left-anchors them */
 }
+/* Tracked + centered labels: compensate the trailing letter-spacing so they
+   sit truly centered (text-indent equal to letter-spacing recenters the glyphs). */
+.section-head.center .eyebrow,
+.page-hero .eyebrow { text-indent: 0.32em; }
 
 .section-title {
   font-family: var(--font-display);
@@ -523,7 +528,7 @@ a.card:hover .thumb__play span,
   z-index: 0;
 }
 .hero__inner { text-align: center; width: 100%; padding-block: var(--space-6); }
-.hero__arabic { font-size: clamp(1.6rem, 4vw, 2.6rem); text-align: center; direction: rtl; margin-bottom: var(--space-3); }
+.hero__arabic { font-size: clamp(1.6rem, 4vw, 2.6rem); text-align: center; direction: rtl; margin-bottom: var(--space-3); max-width: none; }
 .hero h1 {
   letter-spacing: 0.06em;
   margin-bottom: var(--space-2);
@@ -537,6 +542,8 @@ a.card:hover .thumb__play span,
   font-size: clamp(0.72rem, 1.4vw, 0.95rem);
   color: var(--muted);
   margin-top: var(--space-2);
+  max-width: none;       /* fill the centered hero instead of being left-anchored */
+  text-indent: 0.3em;    /* compensate trailing letter-spacing for true centering */
 }
 .hero__tagline {
   margin: var(--space-3) auto 0;
@@ -605,6 +612,7 @@ a.card:hover .thumb__play span,
   font-family: var(--font-body);
   font-style: normal;
   letter-spacing: 0.22em;
+  text-indent: 0.22em; /* compensate trailing letter-spacing for true centering */
   text-transform: uppercase;
   font-size: 0.74rem;
   color: var(--gold);
