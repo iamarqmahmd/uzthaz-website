@@ -151,7 +151,7 @@ collections:
               - { name: date, label: "Date", widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
               - { name: location, label: "Location", widget: string }
               - { name: time, label: "Time (upcoming only, e.g. 8:00 PM)", widget: string, required: false }
-              - { name: registerUrl, label: "Register link (upcoming only)", widget: string, required: false, default: "contact.html" }
+              - { name: registerUrl, label: "Register link (upcoming only)", widget: string, required: false, default: "/contact" }
               - { name: description, label: "Description (past events)", widget: text, required: false }
 
   # ----------------------------------------------------------

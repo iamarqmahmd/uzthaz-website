@@ -1,0 +1,22 @@
+# =============================================================
+#  Clean URLs — serve /about instead of /about.html
+#  (Apache / cPanel shared hosting)
+# =============================================================
+Options -MultiViews
+RewriteEngine On
+
+# --- 1. Send /index or /index.html to the bare domain root ---
+RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+# --- 2. Redirect any /page.html request to the clean /page URL ---
+RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# --- 3. Internally serve /page from page.html (no redirect) ---
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# --- Friendly 404 (optional) ---
+# ErrorDocument 404 /404.html

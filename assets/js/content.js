@@ -107,15 +107,15 @@
   function footerHTML() {
     return '<div class="geo-layer geo-watermark" aria-hidden="true"></div>' +
       '<div class="container"><div class="footer__grid">' +
-        '<div class="footer__brand"><a class="brand" href="index.html">' +
+        '<div class="footer__brand"><a class="brand" href="/">' +
           '<span class="brand__mark" aria-hidden="true"></span>' +
           "<span>Uzthaz <strong>Rasheed</strong></span></a>" +
           '<p class="footer__about" data-site="footerAbout"></p></div>' +
         '<div class="footer__col"><h4>Explore</h4>' +
-          '<a href="about.html">About</a><a href="speeches.html">Speeches</a>' +
-          '<a href="articles.html">Articles</a><a href="events.html">Events</a></div>' +
+          '<a href="/about">About</a><a href="/speeches">Speeches</a>' +
+          '<a href="/articles">Articles</a><a href="/events">Events</a></div>' +
         '<div class="footer__col"><h4>Connect</h4>' +
-          '<a href="shop.html">Materials</a><a href="contact.html">Contact</a>' +
+          '<a href="/shop">Materials</a><a href="/contact">Contact</a>' +
           '<a data-site-email data-fill-text href="mailto:#"></a></div>' +
       "</div>" +
       '<div class="footer__bottom">' +
@@ -148,7 +148,7 @@
   }
 
   function articleCard(a, idx) {
-    return '<a class="card reveal" data-delay="' + (idx % 3) * 80 + '" href="article.html?slug=' + encodeURIComponent(a.slug) + '" data-category="' + esc(a.category) + '">' +
+    return '<a class="card reveal" data-delay="' + (idx % 3) * 80 + '" href="/article?slug=' + encodeURIComponent(a.slug) + '" data-category="' + esc(a.category) + '">' +
       (a.image ? '<div class="thumb" style="margin-bottom:var(--space-2)"><img src="' + esc(a.image) + '" alt=""></div>' : "") +
       '<span class="card__tag">' + esc(a.category) + "</span>" +
       '<h3 class="card__title">' + esc(a.title) + "</h3>" +
@@ -182,15 +182,15 @@
       const event = upcoming[0];
       const featured = articles.find((a) => a.featured) || articles[0];
       const cards = [];
-      if (latest) cards.push(highlight("Latest Speech", latest.title, fmtDate(latest.date) + " · Lecture", latest.description, "speeches.html", "Watch the lecture"));
-      if (event) cards.push(highlight("Upcoming Event", event.title, fmtDate(event.date) + " · " + esc(event.location), "A forthcoming gathering — see full details and how to register.", "events.html", "View details"));
-      if (featured) cards.push(highlight("Featured Article", featured.title, "Reflections · " + esc(featured.readTime), featured.excerpt, "article.html?slug=" + encodeURIComponent(featured.slug), "Read the article"));
+      if (latest) cards.push(highlight("Latest Speech", latest.title, fmtDate(latest.date) + " · Lecture", latest.description, "/speeches", "Watch the lecture"));
+      if (event) cards.push(highlight("Upcoming Event", event.title, fmtDate(event.date) + " · " + esc(event.location), "A forthcoming gathering — see full details and how to register.", "/events", "View details"));
+      if (featured) cards.push(highlight("Featured Article", featured.title, "Reflections · " + esc(featured.readTime), featured.excerpt, "/article?slug=" + encodeURIComponent(featured.slug), "Read the article"));
       grid.innerHTML = cards.join("");
     }
     fill(data.home, "data-home");
     const mat = $("#home-materials");
     if (mat) mat.innerHTML = (data.products.products || []).slice(0, 3).map(function (p, i) {
-      return '<a class="card reveal" data-delay="' + i * 80 + '" href="shop.html">' +
+      return '<a class="card reveal" data-delay="' + i * 80 + '" href="/shop">' +
         '<div class="thumb thumb--portrait">' + (p.image ? '<img src="' + esc(p.image) + '" alt="">' : '<div class="thumb__motif js-mark"></div>') + "</div>" +
         '<div class="product__body"><span class="product__type">' + esc(p.type) + "</span>" +
         '<h3 class="product__title">' + esc(p.title) + "</h3>" +
@@ -246,7 +246,7 @@
           "<div><h3 class=\"event__title\">" + esc(e.title) + "</h3>" +
           '<div class="event__meta"><span>' + ICON.pin + esc(e.location) + "</span>" +
           (e.time ? "<span>" + ICON.clock + esc(e.time) + "</span>" : "") + "</div></div>" +
-          '<a class="btn btn--primary" href="' + esc(e.registerUrl || "contact.html") + '">Register</a></article>';
+          '<a class="btn btn--primary" href="' + esc(e.registerUrl || "/contact") + '">Register</a></article>';
       }).join("");
     }
     if (past) {
@@ -289,8 +289,8 @@
         md(a.body) +
       "</div>" +
       '<div class="prose mt-4" style="display:flex;justify-content:space-between;gap:var(--space-2);flex-wrap:wrap">' +
-        '<a class="btn btn--ghost" href="articles.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6 6-6-6 6-6"/></svg> All Articles</a>' +
-        '<a class="btn btn--primary" href="shop.html">Explore Written Works</a>' +
+        '<a class="btn btn--ghost" href="/articles"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6 6-6-6 6-6"/></svg> All Articles</a>' +
+        '<a class="btn btn--primary" href="/shop">Explore Written Works</a>' +
       "</div></div></div>";
   }
 
