@@ -269,7 +269,7 @@ p { max-width: 70ch; }
 }
 .brand__mark { width: 34px; height: 34px; flex: none; }
 .brand__mark .geo-stroke { stroke-width: 1.4; }
-.brand__logo { width: 34px; height: 34px; flex: none; }
+.brand__logo { width: 50px; height: 50px; flex: none; }
 .brand strong { font-weight: 600; }
 .brand span { color: var(--gold); }
 
