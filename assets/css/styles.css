@@ -269,7 +269,7 @@ p { max-width: 70ch; }
 }
 .brand__mark { width: 34px; height: 34px; flex: none; }
 .brand__mark .geo-stroke { stroke-width: 1.4; }
-.brand__logo { width: 50px; height: 50px; flex: none; }
+.brand__logo { height: 60px; width: auto; flex: none; }
 .brand strong { font-weight: 600; }
 .brand span { color: var(--gold); }
 
@@ -302,16 +302,23 @@ p { max-width: 70ch; }
 .nav__links a[aria-current="page"]::after { transform: scaleX(1); }
 .nav__links a[aria-current="page"] { color: var(--gold); }
 
-.nav__cta {
-  border: 1px solid var(--gold-soft);
+.nav__links .nav__cta {
+  border: 1px solid var(--gold);
   color: var(--gold);
-  padding: 0.55rem 1.1rem;
+  padding: 0.5rem 1.3rem;
   border-radius: var(--radius);
   font-size: 0.82rem;
+  font-weight: 600;
   letter-spacing: 0.06em;
-  transition: background-color 250ms var(--ease), border-color 250ms var(--ease);
+  transition: background-color 250ms var(--ease), border-color 250ms var(--ease), color 250ms var(--ease);
 }
-.nav__cta:hover { background: var(--gold-soft); border-color: var(--gold); }
+.nav__links .nav__cta::after { display: none; } /* no stray underline under the button */
+.nav__links .nav__cta:hover,
+.nav__links .nav__cta[aria-current="page"] {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
 
 .nav__toggle {
   display: none;
