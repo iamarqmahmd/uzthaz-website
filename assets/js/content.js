@@ -37,6 +37,45 @@
   }
   function money(n) { return "Rs " + Number(n).toLocaleString("en-LK"); }
 
+  /* ---------- SEO: meta + JSON-LD structured data ---------- */
+  const SITE_URL = "https://www.uzthazhajjulakbar.org";
+  const OG_FALLBACK = SITE_URL + "/assets/img/uploads/hero-banner.jpg";
+
+  function absUrl(src, fallback) {
+    if (!src) return fallback;
+    if (/^https?:\/\//.test(src)) return src;
+    return SITE_URL + (src.charAt(0) === "/" ? "" : "/") + src;
+  }
+  function ytId(url) {
+    const m = String(url || "").match(/(?:v=|\/embed\/|youtu\.be\/)([\w-]{11})/);
+    return m ? m[1] : "";
+  }
+  function durationISO(str) {
+    const m = String(str || "").match(/(\d+)\s*min/i);
+    return m ? "PT" + m[1] + "M" : undefined;
+  }
+  function upsertMeta(key, value, useProperty) {
+    if (value == null) return;
+    const sel = (useProperty ? 'meta[property="' : 'meta[name="') + key + '"]';
+    let el = document.head.querySelector(sel);
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute(useProperty ? "property" : "name", key);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", value);
+  }
+  function setCanonical(url) {
+    let el = document.head.querySelector('link[rel="canonical"]');
+    if (!el) { el = document.createElement("link"); el.setAttribute("rel", "canonical"); document.head.appendChild(el); }
+    el.setAttribute("href", url);
+  }
+  function injectJsonLd(id, obj) {
+    let s = document.getElementById(id);
+    if (!s) { s = document.createElement("script"); s.type = "application/ld+json"; s.id = id; document.head.appendChild(s); }
+    s.textContent = JSON.stringify(obj);
+  }
+
   /* ---------- inline SVG icons (shared visual language) ---------- */
   const ICON = {
     arrow: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>',
@@ -233,6 +272,27 @@
     if (!grid) return;
     const list = (data.speeches || []).slice().sort((a, b) => (a.date < b.date ? 1 : -1));
     grid.innerHTML = list.map(speechCard).join("");
+    injectJsonLd("ld-speeches", {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": list.map(function (s, i) {
+        const id = ytId(s.youtube);
+        return {
+          "@type": "ListItem",
+          "position": i + 1,
+          "item": {
+            "@type": "VideoObject",
+            "name": s.title,
+            "description": s.description,
+            "uploadDate": s.date,
+            "duration": durationISO(s.duration),
+            "thumbnailUrl": id ? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg" : absUrl(s.image, OG_FALLBACK),
+            "embedUrl": id ? "https://www.youtube.com/embed/" + id : undefined,
+            "contentUrl": s.youtube || undefined
+          }
+        };
+      })
+    });
   }
 
   function renderEvents(data) {
@@ -259,6 +319,25 @@
           esc(e.description) + "</div></div></div></div>";
       }).join("");
     }
+    if (up || past) {
+      injectJsonLd("ld-events", {
+        "@context": "https://schema.org",
+        "@graph": events.map(function (e) {
+          return {
+            "@type": "Event",
+            "name": e.title,
+            "startDate": e.date,
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": { "@type": "Place", "name": e.location, "address": e.location },
+            "description": e.description || ("A gathering with Uzthaz Rasheed Hajjul Akbar in " + (e.location || "Sri Lanka") + "."),
+            "organizer": { "@type": "Person", "name": "Uzthaz Rasheed Hajjul Akbar", "url": SITE_URL + "/about" },
+            "performer": { "@type": "Person", "name": "Uzthaz Rasheed Hajjul Akbar" },
+            "url": SITE_URL + "/events"
+          };
+        })
+      });
+    }
   }
 
   function renderArticlesList(data) {
@@ -275,7 +354,46 @@
     const articles = data.articles || [];
     const a = (slug && articles.find((x) => x.slug === slug)) || articles.find((x) => x.featured) || articles[0];
     if (!a) { host.innerHTML = '<div class="section"><div class="container"><p class="lead text-center">Article not found.</p></div></div>'; return; }
-    document.title = a.title + " — Uzthaz Rasheed Hajjul Akbar";
+    /* --- per-article SEO (title, meta, canonical, structured data) --- */
+    const canonical = SITE_URL + "/article?slug=" + encodeURIComponent(a.slug);
+    const desc = a.excerpt || "A reflection by Uzthaz Rasheed Hajjul Akbar.";
+    const img = absUrl(a.image, OG_FALLBACK);
+    const fullTitle = a.title + " — Uzthaz Rasheed Hajjul Akbar";
+    document.title = fullTitle;
+    upsertMeta("description", desc, false);
+    setCanonical(canonical);
+    upsertMeta("og:type", "article", true);
+    upsertMeta("og:title", fullTitle, true);
+    upsertMeta("og:description", desc, true);
+    upsertMeta("og:url", canonical, true);
+    upsertMeta("og:image", img, true);
+    upsertMeta("twitter:title", fullTitle, false);
+    upsertMeta("twitter:description", desc, false);
+    upsertMeta("twitter:image", img, false);
+    injectJsonLd("ld-article", {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": a.title,
+      "description": desc,
+      "image": img,
+      "datePublished": a.date,
+      "dateModified": a.date,
+      "inLanguage": "en",
+      "articleSection": a.category,
+      "url": canonical,
+      "mainEntityOfPage": canonical,
+      "author": { "@type": "Person", "name": "Uzthaz Rasheed Hajjul Akbar", "url": SITE_URL + "/about" },
+      "publisher": { "@type": "Person", "@id": SITE_URL + "/#person", "name": "Uzthaz Rasheed Hajjul Akbar" }
+    });
+    injectJsonLd("ld-breadcrumb", {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL + "/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": SITE_URL + "/articles" },
+        { "@type": "ListItem", "position": 3, "name": a.title }
+      ]
+    });
     host.innerHTML =
       '<header class="page-hero"><div class="geo-layer" aria-hidden="true"></div>' +
         '<div class="container" style="max-width:760px">' +
@@ -298,6 +416,26 @@
     const grid = $("#product-grid");
     if (!grid) return;
     grid.innerHTML = (data.products || []).map(productCard).join("");
+    injectJsonLd("ld-products", {
+      "@context": "https://schema.org",
+      "@graph": (data.products || []).map(function (p) {
+        return {
+          "@type": "Product",
+          "name": p.title,
+          "description": p.description,
+          "category": p.category,
+          "image": absUrl(p.image, OG_FALLBACK),
+          "brand": { "@type": "Person", "name": "Uzthaz Rasheed Hajjul Akbar" },
+          "offers": {
+            "@type": "Offer",
+            "price": p.price,
+            "priceCurrency": "LKR",
+            "availability": "https://schema.org/InStock",
+            "url": SITE_URL + "/shop"
+          }
+        };
+      })
+    });
   }
 
   /* ---------- orchestration ---------- */
